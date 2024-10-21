@@ -1,0 +1,70 @@
+<h3>Thêm mới</h3>
+
+<form [formGroup]="productForm" (ngSubmit)="handleSubmit()">
+  <div class="form-group mb-3">
+    <label for="" class="form-label">Tên sản phẩm</label>
+    <input
+      type="text"
+      formControlName="name"
+      placeholder="Nhập tên sản phẩm"
+      class="form-control"
+    />
+    @if (productForm.controls['name'].dirty ||
+    productForm.controls['name'].touched) { @if
+    (productForm.controls['name'].errors?.['required']) {
+    <small class="text-danger">Vui lòng nhâp tên sanản phẩm</small>
+    }@else if (productForm.controls['name'].errors?.['minlength']) {
+    <small class="text-danger">Teên sản phẩm tối thieu 3 ký tự</small>
+    } }
+  </div>
+  <div class="form-group mb-3">
+    <label for="" class="form-label">Gia</label>
+    <input
+      type="number"
+      formControlName="price"
+      placeholder="Nhập giá"
+      class="form-control"
+    />
+    @if (productForm.controls['price'].dirty ||
+    productForm.controls['price'].touched) { @if
+    (productForm.controls['price'].errors?.['required']) {
+    <small class="text-danger">Vui lòng nhâp gia</small>
+    }@else if (productForm.controls['price'].errors?.['min']) {
+    <small class="text-danger">Gia khong duoc am</small>
+    } }
+  </div>
+  <div class="form-group mb-3">
+    <label for="" class="form-label">Hình ảnh</label>
+    <input
+      type="text"
+      formControlName="image"
+      placeholder="Nhập hình ảnh"
+      class="form-control"
+    />
+    @if (productForm.controls['image'].dirty ||
+    productForm.controls['image'].touched) { @if
+    (productForm.controls['image'].errors?.['required']) {
+    <small class="text-danger">Vui lòng hinh anh</small>
+    } }
+  </div>
+  <div class="form-group mb-3">
+    <label for="" class="form-label">Số luợng</label>
+    <input
+      type="number"
+      formControlName="quantity"
+      placeholder="Nhập số lượng"
+      class="form-control"
+    />
+  </div>
+  <div class="form-group mb-3">
+    <label for="" class="form-label">Mô tả</label>
+    <textarea
+      formControlName="description"
+      class="form-control"
+      id=""
+      placeholder="Nhập mô tả"
+    ></textarea>
+  </div>
+  <button htmlType="submit" class="btn btn-primary">Thêm mới</button>
+  <button routerLink="/products" class="btn btn-secondary ms-2">Danh sach</button>
+</form>

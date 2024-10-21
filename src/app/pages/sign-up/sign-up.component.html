@@ -1,0 +1,69 @@
+<h3>Đăng ký</h3>
+
+<form [formGroup]="authForm" (ngSubmit)="handleSubmit()">
+  <div class="form-group mb-3">
+    <label for="" class="form-label">User name</label>
+    <input
+      type="text"
+      formControlName="username"
+      placeholder="Nhập username"
+      class="form-control"
+    />
+    @if (authForm.controls['username'].dirty ||
+    authForm.controls['username'].touched) { @if
+    (authForm.controls['username'].errors?.['required']) {
+    <small class="text-danger">Vui lòng nhâp username</small>
+    }@else if (authForm.controls['username'].errors?.['minlength']) {
+    <small class="text-danger">Username tối thieu 3 ký tự</small>
+    } }
+  </div>
+  <div class="form-group mb-3">
+    <label for="" class="form-label">Email</label>
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Nhập email"
+      class="form-control"
+    />
+    @if (authForm.controls['email'].dirty || authForm.controls['email'].touched)
+    { @if (authForm.controls['email'].errors?.['required']) {
+    <small class="text-danger">Vui lòng nhâp email</small>
+    }@else if (authForm.controls['email'].errors?.['email']) {
+    <small class="text-danger">Email khong đúng dịnh dạng</small>
+    } }
+  </div>
+  <div class="form-group mb-3">
+    <label for="" class="form-label">Password</label>
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Nhập password"
+      class="form-control"
+    />
+    @if (authForm.controls['password'].dirty ||
+    authForm.controls['password'].touched) { @if
+    (authForm.controls['password'].errors?.['required']) {
+    <small class="text-danger">Vui lòng nhâp password</small>
+    }@else if (authForm.controls['password'].errors?.['minlength']) {
+    <small class="text-danger">Password tối thieu 6 ký tự</small>
+    } }
+  </div>
+  <div class="form-group mb-3">
+    <label for="" class="form-label">Confirm Passowrd</label>
+    <input
+      type="password"
+      formControlName="confirmPassword"
+      placeholder="Nhập confirmPassword"
+      class="form-control"
+    />
+    @if (authForm.controls['confirmPassword'].dirty ||
+    authForm.controls['confirmPassword'].touched) { @if
+    (authForm.controls['confirmPassword'].errors?.['required']) {
+    <small class="text-danger">Vui lòng nhâp confirmPassword</small>
+    }@else if (authForm.controls['confirmPassword'].errors?.['match']) {
+    <small class="text-danger">Xác nhận mật khẩu không khớp</small>
+    } }
+  </div>
+
+  <button htmlType="submit" class="btn btn-primary">Đăng ký</button>
+</form>

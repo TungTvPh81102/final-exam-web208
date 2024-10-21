@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-between">
+  <h3>Danh sách sản phẩm</h3>
+  <button routerLink="/products/add" class="btn btn-primary">Thêm mới</button>
+</div>
+
+<table class="table mt-2">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Hinh anh</th>
+      <th scope="col">Tên sản phẩm</th>
+      <th scope="col">Giá</th>
+      <th scope="col">Số luong</th>
+      <th>Thao tác</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of products; track $index) {
+    <tr>
+      <td>{{ $index + 1 }}</td>
+      <td>
+        <img width="100" [src]="item.image" [alt]="item.name" />
+      </td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.price }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>
+        <button
+          routerLink="/products/{{ item.id }}/edit"
+          class="btn btn-warning ms-2"
+        >
+          Sửa
+        </button>
+        <button (click)="handleRemove(item.id)" class="btn btn-danger ms-2">
+          Xoá
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
